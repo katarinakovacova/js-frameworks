@@ -27,8 +27,12 @@ public class JavascriptFrameworkController {
 
     @GetMapping(path = "/frameworks",
         produces = MediaType.APPLICATION_JSON_VALUE)
-    public Iterable<JavascriptFramework> getFrameworks() {
-        return repository.findAll();
+    public Iterable<JavascriptFramework> getFrameworks(@RequestParam(required = false) String search) {
+        if (search == null) {
+            return repository.findAll();
+        } else {
+            return repository.findAllByFullTextSearch(search);
+        }
     }
 
     @GetMapping(path = "/frameworks/{id}",

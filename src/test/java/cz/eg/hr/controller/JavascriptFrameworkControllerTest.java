@@ -98,6 +98,13 @@ public class JavascriptFrameworkControllerTest {
             .andExpect(content().json(json1))
             .andExpect(jsonPath("$.id", is(1)));
 
+        mockMvc.perform(get("/api/v1/frameworks?search=rea"))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType("application/json"))
+            .andExpect(jsonPath("$").isArray())
+            .andExpect(jsonPath("$", hasSize(1)))
+            .andExpect(jsonPath("$[0].name", is("React")));
+
         mockMvc.perform(delete("/api/v1/frameworks/1"))
             .andExpect(status().isOk());
 
