@@ -74,6 +74,6 @@ public class JavascriptFrameworkController {
 
         repository.save(updateJavascriptFramework);
 
-        return new ResponseEntity<>(updateJavascriptFramework, HttpStatus.CREATED);
+        return new ResponseEntity<>(updateJavascriptFramework, HttpStatus.OK);
     }
 }

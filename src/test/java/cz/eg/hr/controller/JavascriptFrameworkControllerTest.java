@@ -89,7 +89,7 @@ public class JavascriptFrameworkControllerTest {
         mockMvc.perform(put("/api/v1/frameworks/1")
                 .content(json1)
                 .contentType(MediaType.APPLICATION_JSON))
-            .andExpect(status().isCreated())
+            .andExpect(status().isOk())
             .andExpect(content().contentType("application/json"));
 
         mockMvc.perform(get("/api/v1/frameworks/1"))
